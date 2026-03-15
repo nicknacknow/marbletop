@@ -1,3 +1,4 @@
+all in separate terminals:
 First, start local blockchain:
 ```
 npm run node
@@ -21,5 +22,8 @@ you should now be able to interact, make sure to use metamask.
 TODO:
 
  - FRONTEND:
-   - fix css styling js
-   - use artifacts for generated ABI
+   - [ ] use artifacts for generated ABI
+   - [x] fix css styling js
+
+
+ - create a listener service for contract to save unnecessary writes on blockchain. write off-chain based on events.

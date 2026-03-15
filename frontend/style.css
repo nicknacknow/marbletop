@@ -107,6 +107,10 @@ header h1 span {
   gap: 6px;
   position: absolute;
   top: calc(100% + 6px);
+
+  left: 50%;
+  transform: translateX(-50%);
+
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: var(--radius);

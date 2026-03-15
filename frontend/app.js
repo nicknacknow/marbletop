@@ -27,6 +27,7 @@ const dom = {
   connDot: $("connDot"),
   accountDisplay: $("accountDisplay"),
   accountAddress: $("accountAddress"),
+  accountAddressText: $("accountAddressText"),
   accountBalance: $("accountBalance"),
   addrTooltip: $("addrTooltip"),
   addrTooltipText: $("addrTooltipText"),
@@ -72,7 +73,6 @@ async function init() {
 function setupEventListeners() {
   dom.clickme.addEventListener("click", handleClickme);
   dom.accountDisplay.addEventListener("click", handleAddressClick);
-  dom.accountDisplay.addEventListener("mouseenter", positionAddrTooltip); // i dont like this styling in js
 }
 
 // ─── Handlers ────────────────────────────────────────────────────────────────
@@ -82,7 +82,7 @@ async function handleClickme() {
 }
 
 async function handleAddressClick() {
-  const addr = dom.accountDisplay.dataset.address;
+  const addr = dom.addrTooltipText.textContent;
   if (!addr) return;
   try {
     await navigator.clipboard.writeText(addr);
@@ -90,14 +90,6 @@ async function handleAddressClick() {
   } catch {
     toast("Failed to copy", "error");
   }
-}
-
-function positionAddrTooltip() {
-  const addrRect = dom.accountAddress.getBoundingClientRect();
-  const parentRect = dom.accountDisplay.getBoundingClientRect();
-  const tooltipWidth = dom.addrTooltip.offsetWidth;
-  const addrCenter = (addrRect.left + addrRect.width / 2) - parentRect.left;
-  dom.addrTooltip.style.left = (addrCenter - tooltipWidth / 2) + "px";
 }
 
 /*
@@ -123,11 +115,11 @@ async function updateAccountInfo() {
     const addr = await signer.getAddress();
     const shortAddr = addr.slice(0, 6) + "…" + addr.slice(-4);
 
-    dom.accountAddress.textContent = shortAddr;
+    dom.accountAddressText.textContent = shortAddr;
     dom.accountDisplay.dataset.address = addr;
     dom.addrTooltipText.textContent = addr;
   } catch (err) {
-    dom.accountAddress.textContent = "--";
+    dom.accountAddressText.textContent = "--";
     delete dom.accountDisplay.dataset.address;
     dom.addrTooltipText.textContent = "";
   }
