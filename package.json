@@ -1,0 +1,22 @@
+{
+  "name": "marble_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
+    "workspace": "hardhat run scripts/workspace.ts --network localhost",
+    "few": "node frontend/workspace.js",
+    "node": "hardhat node",
+    "frontend": "npx serve frontend -l 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.28.6"
+  }
+}

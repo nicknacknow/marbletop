@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarblePot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────────────────────── -->
+
+  <header>
+    <div class="connection-dot" id="connDot"></div>
+    <h1>Marble<span>Pot</span></h1>
+    <div class="header-controls">
+      <div class="account-display" id="accountDisplay">
+        <span class="account-address" id="accountAddress">--</span>
+        <div class="addr-tooltip" id="addrTooltip">
+          <svg class="addr-copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+          <span class="addr-tooltip-text" id="addrTooltipText"></span>
+        </div>
+        <span class="account-balance" id="accountBalance">-- ETH</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main ────────────────────────────────────────────────────────────── -->
+
+  <main>
+    <div class="panel">
+      <h2>hi</h2>
+      <button id="clickme">click me</button>
+    </div>
+  </main>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "ethers": "https://cdn.jsdelivr.net/npm/ethers@6.16.0/+esm"
+      }
+    }
+  </script>
+  <script src="abi.js"></script>
+  <script src="app.js" type="module"></script>
+</body>
+
+</html>
