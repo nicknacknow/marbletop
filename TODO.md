@@ -20,10 +20,28 @@ you should now be able to interact, make sure to use metamask.
 
 
 TODO:
+ - CONTRACT:
+   - [ ] learn mappings
+   - [ ] get money transfers working
+   - [ ] learn more about events, errors, structs & other things solidity
+   - [ ] investigate off-chain computation (indexers)
+   - [ ] learn about why structs / events gotta be stored memory-efficiently 
+   - [ ] make a proper pot
 
  - FRONTEND:
+   - [ ] clickme button functionality (!)
+   - [ ] event handling, contract & frontend
+   - [ ] handle accountsChanged metamask event
+   - [ ] (later) leaderboard?
    - [ ] use artifacts for generated ABI
    - [x] fix css styling js
 
 
+ - test in workspace first & learn properly. continue investigating & figuring things out for myself
  - create a listener service for contract to save unnecessary writes on blockchain. write off-chain based on events.
+
+
+NOTES:
+ - perhaps every ~100 tokens mined, create a pot? protocol-based generation
+ - stake floating pot balance
+ - streaks , leaderboard for this etc , stacks?
