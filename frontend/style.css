@@ -99,6 +99,7 @@ header h1 span {
   color: var(--text-dim);
   white-space: nowrap;
   cursor: pointer;
+  transition: color 0.15s ease;
 }
 
 .addr-tooltip {
@@ -122,7 +123,11 @@ header h1 span {
   transition: opacity 0.15s ease;
 }
 
-.account-display[data-address]:hover .addr-tooltip {
+.account-display[data-address] .account-address:hover {
+  color: var(--text);
+}
+
+.account-display[data-address] .account-address:hover .addr-tooltip {
   opacity: 1;
   pointer-events: auto;
 }

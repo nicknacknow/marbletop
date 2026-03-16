@@ -72,7 +72,7 @@ async function init() {
 
 function setupEventListeners() {
   dom.clickme.addEventListener("click", handleClickme);
-  dom.accountDisplay.addEventListener("click", handleAddressClick);
+  dom.accountAddress.addEventListener("click", handleAddressClick);
 }
 
 // ─── Handlers ────────────────────────────────────────────────────────────────
