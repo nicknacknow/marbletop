@@ -34,7 +34,8 @@ const dom = {
   toastContainer: $("toastContainer"),
 
   // buttons
-  clickme: $("clickme"),
+  alertCount: $("alertCount"),
+  incrementCount: $("incrementCount"),
 }
 
 // ─── Initialization ──────────────────────────────────────────────────────────
@@ -71,14 +72,22 @@ async function init() {
 // ─── Event Listeners ─────────────────────────────────────────────────────────
 
 function setupEventListeners() {
-  dom.clickme.addEventListener("click", handleClickme);
+  dom.alertCount.addEventListener("click", handleAlertCount);
+  dom.incrementCount.addEventListener("click", handleIncrementCount);
   dom.accountAddress.addEventListener("click", handleAddressClick);
 }
 
 // ─── Handlers ────────────────────────────────────────────────────────────────
 
-async function handleClickme() {
-  alert("yo")
+async function handleAlertCount() {
+  const count = await contract.current();
+  toast("Count: " + count);
+}
+
+async function handleIncrementCount() {
+  const tx = await contract.increment();
+  const receipt = await tx.wait();
+  console.log("receipt:", receipt);
 }
 
 async function handleAddressClick() {
