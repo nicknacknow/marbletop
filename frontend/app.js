@@ -57,6 +57,7 @@ async function init() {
 
     // Setup event listeners
     setupEventListeners();
+    setupContractEvents();
 
     // Initial data load
     await updateAccountInfo();
@@ -75,6 +76,17 @@ function setupEventListeners() {
   dom.alertCount.addEventListener("click", handleAlertCount);
   dom.incrementCount.addEventListener("click", handleIncrementCount);
   dom.accountAddress.addEventListener("click", handleAddressClick);
+}
+
+
+// ─── Contract Events ─────────────────────────────────────────────────────────
+
+function setupContractEvents() {
+  contract.on("ValueChanged", (caller, newValue) => {
+    console.log(`[ValueChanged] counter=${newValue} - ${caller}`)
+
+    toast("New Count: " + newValue);
+  });
 }
 
 // ─── Handlers ────────────────────────────────────────────────────────────────
