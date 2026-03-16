@@ -29,16 +29,16 @@ TODO:
    - [ ] make a proper pot
 
  - FRONTEND:
-   - [ ] clickme button functionality (!)
    - [ ] event handling, contract & frontend
    - [ ] handle accountsChanged metamask event
    - [ ] (later) leaderboard?
    - [ ] use artifacts for generated ABI
    - [x] fix css styling js
+   - [x] clickme button functionality (!)
 
 
  - test in workspace first & learn properly. continue investigating & figuring things out for myself
- - create a listener service for contract to save unnecessary writes on blockchain. write off-chain based on events.
+ - create a listener service for contract to save unnecessary writes on blockchain. write off-chain based on events. should this be on backend for the web page? then http get 
 
 
 NOTES:

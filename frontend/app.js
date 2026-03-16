@@ -43,13 +43,20 @@ const dom = {
 import { ethers } from "ethers";
 
 async function init() {
-  if (!window.ethereum) return alert("MetaMask required"); // add toast here, maybe loop until found?
+  if (!window.ethereum) throw error("MetaMask required"); // maybe loop until found?
 
   try {
     provider = new ethers.BrowserProvider(window.ethereum);
     await provider.send("eth_requestAccounts", []); // ask user to connect
 
     signer = await provider.getSigner();
+
+    // validate contract exists
+    const code = await provider.getCode(COUNTER_CONTRACT_ADDRESS);
+    if (code === "0x") {
+      throw new Error("No contract deployed at COUNTER_CONTRACT_ADDRESS on current network");
+    }
+
     contract = new ethers.Contract(COUNTER_CONTRACT_ADDRESS, COUNTER_CONTRACT_ABI, signer);
 
     dom.connDot.classList.add("connected");
@@ -65,7 +72,7 @@ async function init() {
 
   } catch (err) {
     dom.connDot.classList.remove("connected");
-    toast("Failed to initialise node connection. Are you using MetaMask?", "error");
+    toast(String(err?.message || err), "error"); // specific logs here ok? or just 'Something went wrong, check console...'
     console.error(err);
   }
 }
