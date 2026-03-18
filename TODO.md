@@ -109,18 +109,27 @@ sequenceDiagram
   participant Server
   participant Contract
 
-  %% Server startup: compute latest value
-  Server->>Contract: Get past ChangeValue events
-  Server->>Server: Compute and cache latest value
-
-  %% Server listens asynchronously for new events
-  par Server listens to contract events
-    Contract-->>Server: Emit ChangeValue event
-    Server->>Server: Update cache
+  %% Server startup: compute latest value once
+  Note over Server: Startup (one-time)
+  
+  Server->>Contract: Get latest ChangeCount event
+  alt Logs exist
+    Contract-->>Server: latest ChangeCount(value)
+  else Don't exist
+    Server->>Server: Default value to 0
   end
 
-  %% Frontend requests count
-  Frontend->>Server: Request 'count'
+  Note over Server: Update cache on emit
+
+  %% Server listens for new updates
+  par On ChangeCount event emit
+    Contract-->>Server: ChangeCount(newValue)
+  end
+
+  Note over Server: Some time later...
+
+  %% Frontend reads current value
+  Frontend->>Server: Request count
   Server-->>Frontend: Return cached count
 ```
 
