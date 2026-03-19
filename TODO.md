@@ -43,6 +43,7 @@ TODO:
  - test in workspace first & learn properly. continue investigating & figuring things out for myself
  - create a listener service for contract to save unnecessary writes on blockchain. write off-chain based on events. should this be on backend for the web page? then http get 
   - onload client subscribes, server then waits for contract emit, then publishes to subscribers. 
+  - persist event data using sqlite?
 
 
 NOTES:
