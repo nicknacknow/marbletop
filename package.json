@@ -14,10 +14,15 @@
     "protocol:workspace": "npm run workspace -w @marble/protocol",
     "protocol:node": "npm run node -w @marble/protocol",
     
+    "protocol": "concurrently -n node,deploy \"npm run protocol:node\" \"wait-on tcp:127.0.0.1:8545 && npm run protocol:deploy:local\"",
     "frontend": "npm start -w @marble/frontend",
     "backend": "npm start -w @marble/backend"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "wait-on": "^8.0.1"
+  }
 }
