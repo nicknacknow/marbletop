@@ -8,13 +8,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "npm run compile -w @marble/protocol",
-    "test": "npm run test -w @marble/protocol",
-    "deploy:local": "npm run deploy:local -w @marble/protocol",
-    "workspace": "npm run workspace -w @marble/protocol",
-    "few": "npm run few -w @marble/protocol",
-    "node": "npm run node -w @marble/protocol",
-    "frontend": "npm start -w @marble/frontend"
+    "protocol:compile": "npm run compile -w @marble/protocol",
+    "protocol:test": "npm run test -w @marble/protocol",
+    "protocol:deploy:local": "npm run deploy:local -w @marble/protocol",
+    "protocol:workspace": "npm run workspace -w @marble/protocol",
+    "protocol:node": "npm run node -w @marble/protocol",
+    
+    "frontend": "npm start -w @marble/frontend",
+    "backend": "npm start -w @marble/backend"
   },
   "keywords": [],
   "author": "",
