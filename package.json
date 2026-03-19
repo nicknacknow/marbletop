@@ -1,6 +1,10 @@
 {
   "name": "marble_project",
   "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,9 +12,9 @@
     "test": "hardhat test",
     "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
     "workspace": "hardhat run scripts/workspace.ts --network localhost",
-    "few": "node frontend/workspace.js",
+    "few": "node scripts/workspace.js",
     "node": "hardhat node",
-    "frontend": "npx serve frontend -l 3000"
+    "frontend": "npm start -w @marble/frontend"
   },
   "keywords": [],
   "author": "",
