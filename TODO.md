@@ -44,6 +44,7 @@ TODO:
  - create a listener service for contract to save unnecessary writes on blockchain. write off-chain based on events. should this be on backend for the web page? then http get 
   - onload client subscribes, server then waits for contract emit, then publishes to subscribers. 
   - persist event data using sqlite?
+  - make use of docker !? :D Maybe get Laszlo to walk me through it...
 
 
 NOTES:
