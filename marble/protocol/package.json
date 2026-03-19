@@ -7,7 +7,6 @@
     "test": "hardhat test",
     "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
     "workspace": "hardhat run scripts/workspace.ts --network localhost",
-    "few": "node scripts/workspace.js",
     "node": "hardhat node"
   },
   "devDependencies": {
