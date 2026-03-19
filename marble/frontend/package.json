@@ -1,0 +1,8 @@
+{
+  "name": "@marble/frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npx serve src -l 3000"
+  }
+}

@@ -1,22 +1,28 @@
 {
   "name": "marble_project",
   "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "marble/*"
+  ],
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "hardhat compile",
-    "test": "hardhat test",
-    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
-    "workspace": "hardhat run scripts/workspace.ts --network localhost",
-    "few": "node frontend/workspace.js",
-    "node": "hardhat node",
-    "frontend": "npx serve frontend -l 3000"
+    "protocol:compile": "npm run compile -w @marble/protocol",
+    "protocol:test": "npm run test -w @marble/protocol",
+    "protocol:deploy:local": "npm run deploy:local -w @marble/protocol",
+    "protocol:workspace": "npm run workspace -w @marble/protocol",
+    "protocol:node": "npm run node -w @marble/protocol",
+    
+    "protocol": "concurrently -n node,deploy \"npm run protocol:node\" \"wait-on tcp:127.0.0.1:8545 && npm run protocol:deploy:local\"",
+    "frontend": "npm start -w @marble/frontend",
+    "backend": "npm start -w @marble/backend"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
-    "hardhat": "^2.28.6"
+    "concurrently": "^9.2.0",
+    "wait-on": "^8.0.1"
   }
 }
