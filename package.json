@@ -8,19 +8,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "hardhat compile",
-    "test": "hardhat test",
-    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
-    "workspace": "hardhat run scripts/workspace.ts --network localhost",
-    "few": "node scripts/workspace.js",
-    "node": "hardhat node",
+    "compile": "npm run compile -w @marble/protocol",
+    "test": "npm run test -w @marble/protocol",
+    "deploy:local": "npm run deploy:local -w @marble/protocol",
+    "workspace": "npm run workspace -w @marble/protocol",
+    "few": "npm run few -w @marble/protocol",
+    "node": "npm run node -w @marble/protocol",
     "frontend": "npm start -w @marble/frontend"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
-    "hardhat": "^2.28.6"
-  }
+  "license": "ISC"
 }
