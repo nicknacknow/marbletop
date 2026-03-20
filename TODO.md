@@ -52,7 +52,18 @@ NOTES:
  - stake floating pot balance
  - streaks , leaderboard for this etc , stacks?
 
-# will do
+> [!IMPORTANT]
+> i have since realised a large amount of my idea beneath is defunct purely because contracts can be read from from the frontend without the use of metamask. They can just read via the rpc url without a signer required.
+
+### Given above, what I will be planning to do:
+
+'Contract Proxy / Interface' - probably use a proxy object or some way of interfacing a read & write contract. 
+- Add functionality to connect your wallet manually (Top right where wallet details are shown)
+- When trying to write, prompt to connect wallet. Issue here is how do we know when trying to write / read ? When calling function that isn't a view?
+
+<br><br>
+
+# will do (WONT DO MOST OF THIS)
 Maybe create a backend service, at first purely to listen to events to serve to frontend? Rather than requiring frontend to register. Could do a nice UX/UI to 'Assign Wallet' or some button which then prompts MetaMask.  'Connect Wallet' ?
 This is important because currently need to connect wallet in order to look at contract, i.e. get/fetch values. This may be bad deisgn? Asking to connect wallet on page load lol. Not sure.
 If you subscribe to values on server, frontend onload could fetch values from server. This way can view frontend fine, just can't interact. 
