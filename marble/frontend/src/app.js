@@ -43,9 +43,9 @@ const dom = {
 import { ethers } from "ethers";
 
 async function init() {
-  if (!window.ethereum) throw error("MetaMask required"); // maybe loop until found?
-
   try {
+    if (!window.ethereum) throw new Error("MetaMask required"); // maybe loop until found?
+
     provider = new ethers.BrowserProvider(window.ethereum);
     // await provider.send("eth_requestAccounts", []); // ask user to connect
 
