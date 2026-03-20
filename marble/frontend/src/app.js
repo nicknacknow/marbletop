@@ -94,6 +94,13 @@ function setupContractEvents() {
 
     toast("New Count: " + newValue);
   });
+
+  contract.on("*", (event) => {
+    const eventName = event.fragment.name;
+    const args = event.args.toObject();  // converts proxy to plain object
+
+    console.log(`Event: ${eventName}`, args);
+  });
 }
 
 // ─── Handlers ────────────────────────────────────────────────────────────────
