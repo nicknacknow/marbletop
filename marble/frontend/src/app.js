@@ -47,7 +47,7 @@ async function init() {
 
   try {
     provider = new ethers.BrowserProvider(window.ethereum);
-    await provider.send("eth_requestAccounts", []); // ask user to connect
+    // await provider.send("eth_requestAccounts", []); // ask user to connect
 
     signer = await provider.getSigner();
 
