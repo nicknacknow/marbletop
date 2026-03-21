@@ -39,6 +39,14 @@ TODO:
    - [x] fix css styling js
    - [x] clickme button functionality (!)
 
+  - BACKEND:
+    - [ ] Contract emit listener
+    - [ ] Cache emitted values based on event name (off-chain computation)
+    - [ ] Suitable API to expose cached values based on event name. Any params I should pass?
+      - [ ] perhaps should involve sockets? this way frontend can listen to emits via server aswell.
+    - Part of this API work would mean an interface on frontend which, given metamask connected or not, either query server as proxy or direct to contract. I plan to make this simple & seamless to switch between.
+
+<br><br>
 
  - test in workspace first & learn properly. continue investigating & figuring things out for myself
  - create a listener service for contract to save unnecessary writes on blockchain. write off-chain based on events. should this be on backend for the web page? then http get 
