@@ -1,24 +1,22 @@
 import { ethers } from "hardhat";
 
-const MARBLE_POT_ADDRESS = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+const VAULT_ADDRESS = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
 
 async function main() {
-  const [me] = await ethers.getSigners();
+  const [me, user2] = await ethers.getSigners();
   console.log("Using account:", me.address);
 
-  const pot = await ethers.getContractAt("MarblePot", MARBLE_POT_ADDRESS);
+  const vault = await ethers.getContractAt("Vault", VAULT_ADDRESS);
 
-  const tx = await pot.createPot("name");
-  await tx.wait();
+  const myVault = vault.connect(me);
+  const user2Vault = vault.connect(user2);
 
-  const count = await pot.potCount();
-  console.log(count.toString());
+  console.log(ethers.formatEther(await myVault.balance()), "ETH");
 
+  const tx = await myVault.deposit({ value: ethers.parseEther("1.0") });
+  const receipt = await tx.wait();
 
-
-  // Optional: set to a custom value
-  // await (await counter.set(42)).wait();
-  // console.log("After set:", (await counter.current()).toString());
+  console.log(ethers.formatEther(await myVault.balance()), "ETH");
 }
 
 main().catch((e) => {

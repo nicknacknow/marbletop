@@ -1,17 +1,18 @@
 import { ethers } from "hardhat";
 
+async function deploy(name: string) {
+  const Factory = await ethers.getContractFactory(name);
+  const contract = await Factory.deploy();
+  await contract.waitForDeployment();
+  const address = await contract.getAddress();
+  console.log(`${name} deployed to: ${address}`);
+  return contract;
+}
+
 async function main() {
-  const MarblePot = await ethers.getContractFactory("MarblePot");
-  const pot = await MarblePot.deploy();
-  await pot.waitForDeployment();
-
-  const address = await pot.getAddress();
-  console.log("MarblePot deployed to:", address);
-
-  const Counter = await ethers.getContractFactory("Counter");
-  const counter = await Counter.deploy();
-  await counter.waitForDeployment();
-  console.log("Counter deployed at:", await counter.getAddress());
+  const pot = await deploy("MarblePot");
+  const counter = await deploy("Counter");
+  const vault = await deploy("Vault");
 }
 
 main().catch((error) => {
